@@ -8,17 +8,24 @@
             <div class="card-body">
                 <h5 class="card-title">@categoria.Nombre</h5>
                 <p class="card-text">@categoria.Descripcion</p>
-                <a href="#" class="btn btn-primary">Acceder</a>
+                <a class="btn btn-primary" @onclick="() => NavigateToProgramacion(categoria.Nombre)">Acceder</a>
             </div>
         </div>
     }
 </div>
 
 @code {
+    [Inject] private NavigationManager Navigation { get; set; }
     private List<Categoria> categorias = new List<Categoria>()
     {
         new Categoria{Nombre = "Programación", Descripcion = "Tareas de programación pendientes"},
         new Categoria{Nombre = "Acuario", Descripcion = "Tareas del acuario pendientes"},
         new Categoria{Nombre = "Universidad", Descripcion = "Tareas de la universidad pendientes"},
     };
+
+    private void NavigateToProgramacion(string nombre)
+    {
+        // Usar la instancia inyectada para navegar
+        Navigation.NavigateTo("/" + nombre);
+    }
 }
