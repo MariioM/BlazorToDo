@@ -1,3 +1,23 @@
 ﻿@page "/Programacion"
 
 <h1> Programacion </h1>
+<ul>
+	@foreach (var todo in todos) { 
+		<li>
+			<label>
+				<input type="checkbox" @bind="todo.IsDone"/>
+				@todo.Name
+			</label>
+		</li>
+	}
+</ul>
+
+@code{
+	private List<ToDo> todos = new List<ToDo>()
+	{
+		new ToDo{Name = "Estudiar Blazor", IsDone = true},
+		new ToDo{Name = "Hacer App Piscinas", IsDone = false},
+		new ToDo{Name = "Mirar SignalIR", IsDone = false},
+		new ToDo{Name = "Mirar SQL Server", IsDone = false},
+	};
+}
