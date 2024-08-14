@@ -1,0 +1,24 @@
+﻿@page "/"
+
+<h1>Categorias</h1>
+<div class="categorias-container">
+    @foreach (var categoria in categorias)
+    {
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@categoria.Nombre</h5>
+                <p class="card-text">@categoria.Descripcion</p>
+                <a href="#" class="btn btn-primary">Acceder</a>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private List<Categoria> categorias = new List<Categoria>()
+    {
+        new Categoria{Nombre = "Programación", Descripcion = "Tareas de programación pendientes"},
+        new Categoria{Nombre = "Acuario", Descripcion = "Tareas del acuario pendientes"},
+        new Categoria{Nombre = "Universidad", Descripcion = "Tareas de la universidad pendientes"},
+    };
+}
